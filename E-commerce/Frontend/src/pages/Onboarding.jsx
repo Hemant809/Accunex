@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Building2, FileText, UserCheck, CreditCard, ArrowRight, ArrowLeft, CheckCircle } from "lucide-react";
-import axios from "axios";
+import axios from "../api/axios";
 import { toast } from "react-hot-toast";
 
 export default function Onboarding() {
@@ -45,7 +45,7 @@ export default function Onboarding() {
     try {
       // Update Shop
       await axios.put(
-        `http://accunex.onrender.com/api/shops/${shopId}`,
+        `/shops/${shopId}`,
         {
           name: formData.shopName,
           businessType: formData.businessType,
@@ -75,7 +75,7 @@ export default function Onboarding() {
 
       // Update User name
       await axios.put(
-        `http://accunex.onrender.com/api/users/${userId}`,
+        `/users/${userId}`,
         { name: formData.ownerName }
       );
 
