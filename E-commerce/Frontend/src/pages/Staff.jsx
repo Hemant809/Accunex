@@ -17,7 +17,7 @@ export default function Staff() {
   const fetchStaff = async () => {
     try {
       const token = localStorage.getItem("token");
-      const { data } = await axios.get("http://localhost:5000/api/staff", {
+      const { data } = await axios.get("http://accunex.onrender.com/api/staff", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setStaffList(data);
@@ -29,7 +29,7 @@ export default function Staff() {
   const addStaff = async () => {
     try {
       const token = localStorage.getItem("token");
-      await axios.post("http://localhost:5000/api/staff", newStaff, {
+      await axios.post("http://accunex.onrender.com/api/staff", newStaff, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setNewStaff({ name: "", email: "", mobile: "", role: "staff", department: "" });
@@ -46,7 +46,7 @@ export default function Staff() {
     if (!window.confirm("Delete this staff member?")) return;
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/staff/${id}`, {
+      await axios.delete(`http://accunex.onrender.com/api/staff/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchStaff();
@@ -58,7 +58,7 @@ export default function Staff() {
   const toggleStatus = async (id, currentStatus) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.put(`http://localhost:5000/api/staff/${id}`, 
+      await axios.put(`http://accunex.onrender.com/api/staff/${id}`, 
         { status: currentStatus === "Active" ? "Inactive" : "Active" },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -71,7 +71,7 @@ export default function Staff() {
   const confirmRegistration = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.put(`http://localhost:5000/api/staff/${id}/confirm`, {}, {
+      await axios.put(`http://accunex.onrender.com/api/staff/${id}/confirm`, {}, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMenuOpenId(null);
@@ -84,7 +84,7 @@ export default function Staff() {
   const viewStaffProfile = async (staffId) => {
     try {
       const token = localStorage.getItem("token");
-      const { data } = await axios.get(`http://localhost:5000/api/users/staff/${staffId}`, {
+      const { data } = await axios.get(`http://accunex.onrender.com/api/users/staff/${staffId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setViewProfile(data);
@@ -97,7 +97,7 @@ export default function Staff() {
   const saveEdit = async () => {
     try {
       const token = localStorage.getItem("token");
-      await axios.put(`http://localhost:5000/api/staff/${editStaff._id}`, editStaff, {
+      await axios.put(`http://accunex.onrender.com/api/staff/${editStaff._id}`, editStaff, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setEditStaff(null);

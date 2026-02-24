@@ -15,7 +15,7 @@ export default function MySales() {
   const fetchMySales = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:5000/api/sales", {
+      const res = await axios.get("http://accunex.onrender.com/api/sales", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const today = new Date().toISOString().split("T")[0];

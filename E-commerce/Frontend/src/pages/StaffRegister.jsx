@@ -33,7 +33,7 @@ export default function StaffRegister() {
 
   const fetchStaffDetails = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/api/staff/${staffId}`);
+      const { data } = await axios.get(`http://accunex.onrender.com/api/staff/${staffId}`);
       setFormData(prev => ({ ...prev, role: data.role }));
     } catch (error) {
       console.error("Error fetching staff details:", error);
@@ -54,7 +54,7 @@ export default function StaffRegister() {
 
     setLoading(true);
     try {
-      await axios.post("http://localhost:5000/api/staff/complete-registration", {
+      await axios.post("http://accunex.onrender.com/api/staff/complete-registration", {
         staffId,
         name: formData.name,
         mobile: formData.mobile,

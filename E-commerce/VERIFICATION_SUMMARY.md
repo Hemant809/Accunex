@@ -183,7 +183,7 @@ cd backend
 npm install
 node server.js
 ```
-✅ Server runs on http://localhost:5000
+✅ Server runs on https://accunex.onrender.com
 
 ### Frontend
 ```bash
@@ -242,7 +242,7 @@ FRONTEND_URL=http://localhost:5173
 
 ### Frontend (.env)
 ```env
-VITE_API_URL=http://localhost:5000
+VITE_API_URL=https://accunex.onrender.com
 ```
 
 ---

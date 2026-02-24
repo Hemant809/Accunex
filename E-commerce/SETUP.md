@@ -10,7 +10,7 @@ npm run seed    # Create test users
 npm run dev     # Start backend server
 ```
 
-Backend will run on: http://localhost:5000
+Backend will run on: https://accunex.onrender.com
 
 ### 2. Frontend Setup
 ```bash

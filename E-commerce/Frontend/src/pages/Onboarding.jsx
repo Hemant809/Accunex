@@ -45,7 +45,7 @@ export default function Onboarding() {
     try {
       // Update Shop
       await axios.put(
-        `http://localhost:5000/api/shops/${shopId}`,
+        `http://accunex.onrender.com/api/shops/${shopId}`,
         {
           name: formData.shopName,
           businessType: formData.businessType,
@@ -75,7 +75,7 @@ export default function Onboarding() {
 
       // Update User name
       await axios.put(
-        `http://localhost:5000/api/users/${userId}`,
+        `http://accunex.onrender.com/api/users/${userId}`,
         { name: formData.ownerName }
       );
 

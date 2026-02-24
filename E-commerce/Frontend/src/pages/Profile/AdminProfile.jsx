@@ -114,7 +114,7 @@ export default function AdminProfile() {
   const fetchShopDetails = async () => {
     try {
       const token = localStorage.getItem("token");
-      const { data: shopData } = await axios.get("http://localhost:5000/api/shops", {
+      const { data: shopData } = await axios.get("http://accunex.onrender.com/api/shops", {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (shopData) {
@@ -172,7 +172,7 @@ export default function AdminProfile() {
       };
 
       const { data: updatedShop } = await axios.put(
-        "http://localhost:5000/api/shops",
+        "http://accunex.onrender.com/api/shops",
         updateData,
         { headers: { Authorization: `Bearer ${token}` } }
       );

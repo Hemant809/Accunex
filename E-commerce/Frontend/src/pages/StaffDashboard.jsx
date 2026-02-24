@@ -21,10 +21,10 @@ export default function StaffDashboard() {
     try {
       const token = localStorage.getItem("token");
       const [salesRes, purchasesRes] = await Promise.all([
-        axios.get("http://localhost:5000/api/sales", {
+        axios.get("http://accunex.onrender.com/api/sales", {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        axios.get("http://localhost:5000/api/purchases", {
+        axios.get("http://accunex.onrender.com/api/purchases", {
           headers: { Authorization: `Bearer ${token}` },
         }),
       ]);
