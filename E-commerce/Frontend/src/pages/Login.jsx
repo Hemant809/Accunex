@@ -92,7 +92,7 @@ export default function Login() {
         
         {/* Home Button */}
         <button
-          onClick={() => window.location.href = 'http://localhost:5174'}
+          onClick={() => window.location.href = 'http://https://accunex.vercel.app'}
           className="absolute top-6 left-6 flex items-center gap-2 text-slate-600 hover:text-teal-600 transition font-medium"
         >
           <Home size={20} />
