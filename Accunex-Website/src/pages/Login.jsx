@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 export default function Login() {
   useEffect(() => {
     // Redirect to actual E-commerce application registration
-    window.location.href = 'http://localhost:5173/register';
+    window.location.href = 'https://accunex-3deb.vercel.app/login';
   }, []);
 
   return (
