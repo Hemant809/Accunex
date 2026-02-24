@@ -29,7 +29,7 @@ export default function Register() {
 
     setLoading(true);
     try {
-      const res = await axios.post("http://accunex.onrender.com/api/auth/register", {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/auth/register`, {
         email: formData.email,
         password: formData.password,
         mobile: formData.mobile,
@@ -94,7 +94,7 @@ export default function Register() {
         
         {/* Home Button */}
         <button
-          onClick={() => window.location.href = 'http://localhost:5174'}
+          onClick={() => window.location.href = 'https://accunex-3deb.vercel.app'}
           className="absolute top-6 left-6 flex items-center gap-2 text-slate-600 hover:text-teal-600 transition font-medium z-10"
         >
           <Home size={20} />
