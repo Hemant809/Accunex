@@ -1,0 +1,12 @@
+{
+  "name": "smart-grocery-system",
+  "version": "1.0.0",
+  "description": "Root package to run both backend and frontend",
+  "scripts": {
+    "start": "concurrently \"npm run server --prefix backend\" \"npm run dev --prefix Frontend\"",
+    "install-all": "npm install && npm install --prefix backend && npm install --prefix Frontend"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

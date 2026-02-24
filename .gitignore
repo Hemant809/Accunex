@@ -1,0 +1,8 @@
+node_modules
+Accunex-Website/node_modules
+E-commerce/node_modules
+.env
+E-commerce/.env
+E-commerce/backend/.env
+dist
+build
