@@ -124,7 +124,7 @@ export default function AdminProfile() {
           establishedYear: shopData.establishedYear || "",
           companyEmail: shopData.email || "",
           companyPhone: shopData.phone || "",
-          address: `${shopData.address?.street || ""}, ${shopData.address?.city || ""}, ${shopData.address?.state || ""}`.trim(),
+          address: `${shopData.address?.street || ""}${shopData.address?.city ? ', ' + shopData.address.city : ""}${shopData.address?.state ? ', ' + shopData.address.state : ""}`.trim(),
           gstNumber: shopData.gstNumber || "",
           panNumber: shopData.panNumber || "",
           registrationNumber: shopData.registrationNumber || "",
