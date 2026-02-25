@@ -195,6 +195,21 @@ export default function AdminProfile() {
     }
   };
 
+  const handleDeleteAccount = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      await axios.delete("/auth/delete-account", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      alert("Account deleted successfully");
+      localStorage.clear();
+      window.location.href = "/login";
+    } catch (error) {
+      console.error("Delete error:", error);
+      alert(error.response?.data?.message || "Error deleting account");
+    }
+  };
+
   return (
     <div className="space-y-8">
 
@@ -262,6 +277,28 @@ export default function AdminProfile() {
           </>
         )}
       </Section>
+
+      {/* Danger Zone */}
+      <div className="bg-red-50 border-2 border-red-200 rounded-xl p-6">
+        <h3 className="text-lg font-semibold text-red-800 mb-2">
+          Danger Zone
+        </h3>
+        <p className="text-sm text-red-600 mb-4">
+          Once you delete your account, there is no going back. Please be certain.
+        </p>
+        <button
+          onClick={() => {
+            if (window.confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
+              if (window.confirm("Final confirmation: All your data will be permanently deleted. Continue?")) {
+                handleDeleteAccount();
+              }
+            }
+          }}
+          className="bg-red-600 hover:bg-red-700 text-white px-6 py-2.5 rounded-lg font-medium transition"
+        >
+          Delete Account
+        </button>
+      </div>
 
     </div>
   );
