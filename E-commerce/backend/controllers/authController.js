@@ -90,3 +90,27 @@ exports.loginUser = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+// ================= DELETE ACCOUNT =================
+exports.deleteAccount = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    if (user.role !== "admin") {
+      return res.status(403).json({ message: "Only admin can delete account" });
+    }
+
+    // Delete shop and all related data
+    await Shop.findByIdAndDelete(user.shop);
+    await User.deleteMany({ shop: user.shop });
+
+    res.json({ message: "Account deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
