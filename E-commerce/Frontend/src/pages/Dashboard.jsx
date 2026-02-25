@@ -44,7 +44,8 @@ export default function Dashboard() {
   };
 
   const netProfit = dashboardData?.netProfit || 0;
-  const profitGrowth = 12.5; // Mock growth percentage
+  const totalSales = dashboardData?.totalSalesAmount || 0;
+  const profitGrowth = totalSales > 0 ? ((netProfit / totalSales) * 100) : 0;
 
   const netOutstanding = (dashboardData?.totalReceivable || 0) - (dashboardData?.totalPayable || 0);
 
@@ -310,7 +311,7 @@ export default function Dashboard() {
               <div className="relative">
                 <div className="w-32 h-32 rounded-full border-8 border-white/20 flex items-center justify-center">
                   <div className="text-center">
-                    <p className="text-5xl font-bold text-white">82</p>
+                    <p className="text-5xl font-bold text-white">{dashboardData ? Math.min(Math.round((dashboardData.totalSalesAmount / (dashboardData.totalSalesAmount + dashboardData.totalPurchaseAmount + dashboardData.totalExpenses || 1)) * 100), 100) : 0}</p>
                     <p className="text-sm text-teal-100">/ 100</p>
                   </div>
                 </div>
@@ -318,7 +319,7 @@ export default function Dashboard() {
               
               <div className="mt-6 text-center">
                 <span className="inline-block bg-green-500/20 text-green-100 px-4 py-2 rounded-full text-sm font-semibold">
-                  ✓ Healthy
+                  {dashboardData && dashboardData.totalSalesAmount > 0 ? '✓ Healthy' : 'No Data'}
                 </span>
               </div>
             </div>
