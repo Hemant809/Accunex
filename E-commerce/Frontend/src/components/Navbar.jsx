@@ -1,12 +1,32 @@
 import { ChevronDown, LogOut, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
+import axios from "../api/axios";
 
 function Navbar() {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
   const [open, setOpen] = useState(false);
+  const [ownerName, setOwnerName] = useState("");
+
+  useEffect(() => {
+    fetchOwnerName();
+  }, []);
+
+  const fetchOwnerName = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const { data: shopData } = await axios.get("/shops", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (shopData?.ownerName) {
+        setOwnerName(shopData.ownerName);
+      }
+    } catch (error) {
+      console.error("Error fetching owner name:", error);
+    }
+  };
 
   const handleLogout = () => {
     logout();
@@ -27,11 +47,11 @@ function Navbar() {
             className="flex items-center gap-3 cursor-pointer group"
           >
             <div className="w-10 h-10 bg-teal-600 text-white rounded-full flex items-center justify-center font-semibold shadow-sm">
-              {user?.name?.charAt(0).toUpperCase() || "U"}
+              {ownerName?.charAt(0).toUpperCase() || user?.name?.charAt(0).toUpperCase() || "U"}
             </div>
 
             <span className="text-sm text-neutral-700 group-hover:text-teal-600 transition">
-              {user?.name || "User"}
+              {ownerName || user?.name || "User"}
             </span>
 
             <ChevronDown
