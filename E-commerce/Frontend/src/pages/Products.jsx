@@ -115,7 +115,7 @@ export default function Products() {
       </h1>
 
       {/* Add Product */}
-      <div className="bg-white p-6 rounded-xl border border-neutral-200 grid grid-cols-6 gap-4">
+      <div className="bg-white p-4 sm:p-6 rounded-xl border border-neutral-200 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
 
         <div className="relative">
           <input
@@ -217,7 +217,7 @@ export default function Products() {
 
         <button
           onClick={handleAdd}
-          className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg transition col-span-6"
+          className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg transition sm:col-span-2 lg:col-span-6"
         >
           Add Product
         </button>
@@ -225,9 +225,10 @@ export default function Products() {
       </div>
 
       {/* Table */}
-      <div className="bg-white p-6 rounded-xl border border-neutral-200 overflow-x-auto">
+      <div className="bg-white p-4 sm:p-6 rounded-xl border border-neutral-200">
 
-        <table className="w-full text-sm">
+        <div className="overflow-x-auto">
+        <table className="w-full text-sm min-w-[800px]">
           <thead className="border-b border-neutral-200 text-neutral-500">
             <tr>
               <th className="text-left py-3">Product</th>
@@ -375,6 +376,7 @@ export default function Products() {
           </tbody>
 
         </table>
+        </div>
 
       </div>
 

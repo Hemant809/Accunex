@@ -229,17 +229,17 @@ export default function Purchase() {
     <div className="space-y-8">
 
       {/* Title */}
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-semibold">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+        <h1 className="text-xl sm:text-2xl font-semibold">
           Purchase Voucher
         </h1>
-        <span className="text-sm text-neutral-500">
+        <span className="text-xs sm:text-sm text-neutral-500">
           Voucher No: {voucherNo}
         </span>
       </div>
 
       {/* Header */}
-      <div className="bg-white p-6 rounded-xl border border-neutral-200 grid grid-cols-3 gap-6">
+      <div className="bg-white p-4 sm:p-6 rounded-xl border border-neutral-200 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
 
         <div className="relative">
           <label className="text-sm text-neutral-600">Supplier</label>
@@ -292,11 +292,12 @@ export default function Purchase() {
       </div>
 
       {/* Items Section */}
-      <div className="grid grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
 
-        <div className="col-span-3 bg-white p-6 rounded-xl border border-neutral-200 overflow-x-auto">
+        <div className="lg:col-span-3 bg-white p-4 sm:p-6 rounded-xl border border-neutral-200">
 
-          <table className="w-full text-sm">
+          <div className="overflow-x-auto">
+          <table className="w-full text-sm min-w-[700px]">
             <thead className="border-b border-neutral-200 text-neutral-500">
               <tr>
                 <th className="text-left py-3">Item</th>
@@ -404,6 +405,7 @@ export default function Purchase() {
               })}
             </tbody>
           </table>
+          </div>
 
           <button
             onClick={addRow}
@@ -415,7 +417,7 @@ export default function Purchase() {
         </div>
 
         {/* Totals Panel */}
-        <div className="bg-white p-6 rounded-xl border border-neutral-200 space-y-4 h-fit">
+        <div className="bg-white p-4 sm:p-6 rounded-xl border border-neutral-200 space-y-4 h-fit">
 
           <Row label="Subtotal" value={subtotal} />
           <Row label="Total GST" value={totalGST} />
@@ -435,7 +437,7 @@ export default function Purchase() {
       </div>
 
       {/* Footer */}
-      <div className="bg-white p-6 rounded-xl border border-neutral-200 space-y-4">
+      <div className="bg-white p-4 sm:p-6 rounded-xl border border-neutral-200 space-y-4">
 
         <div>
           <label className="text-sm text-neutral-600">
@@ -449,17 +451,17 @@ export default function Purchase() {
           />
         </div>
 
-        <div className="flex justify-end gap-4">
+        <div className="flex flex-col sm:flex-row justify-end gap-4">
           <button
             onClick={() => window.location.reload()}
-            className="bg-neutral-300 px-6 py-2 rounded"
+            className="bg-neutral-300 px-6 py-2 rounded w-full sm:w-auto"
           >
             Clear
           </button>
 
           <button
             onClick={handleSave}
-            className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded"
+            className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded w-full sm:w-auto"
           >
             Save Purchase
           </button>

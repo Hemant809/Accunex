@@ -214,10 +214,10 @@ export default function Receipt() {
     <div className="space-y-6">
 
       {/* Header with Customer Name */}
-      <div className="bg-white p-6 rounded-xl border">
-        <div className="flex justify-between items-center mb-4">
-          <h1 className="text-2xl font-semibold">Receipt Voucher</h1>
-          <span className="text-sm text-neutral-500">Voucher: {form.voucherNo}</span>
+      <div className="bg-white p-4 sm:p-6 rounded-xl border">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
+          <h1 className="text-xl sm:text-2xl font-semibold">Receipt Voucher</h1>
+          <span className="text-xs sm:text-sm text-neutral-500">Voucher: {form.voucherNo}</span>
         </div>
         
         {/* Customer Name - Prominent */}
@@ -229,7 +229,7 @@ export default function Receipt() {
             value={customerName}
             onChange={(e) => handleCustomerChange(e.target.value)}
             disabled={!!prefilledData || !!editEntry}
-            className={`mt-1 w-full border-2 border-green-300 px-4 py-3 rounded-lg text-lg font-semibold ${prefilledData || editEntry ? 'bg-green-50' : ''}`}
+            className={`mt-1 w-full border-2 border-green-300 px-3 sm:px-4 py-2 sm:py-3 rounded-lg text-base sm:text-lg font-semibold ${prefilledData || editEntry ? 'bg-green-50' : ''}`}
           />
           {showSuggestions && filteredCustomers.length > 0 && (
             <div className="absolute z-10 w-full bg-white border border-neutral-300 rounded-lg mt-1 max-h-48 overflow-y-auto shadow-lg">
@@ -251,7 +251,7 @@ export default function Receipt() {
       </div>
 
       {/* Receipt Details */}
-      <div className="bg-white p-6 rounded-xl border grid grid-cols-2 gap-6">
+      <div className="bg-white p-4 sm:p-6 rounded-xl border grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
 
         {/* LEFT */}
         <div className="space-y-4">
@@ -313,9 +313,10 @@ export default function Receipt() {
 
       {/* Pending Bills Section */}
       {form.receiptType === "bill" && pendingBills.length > 0 && (
-        <div className="bg-white p-6 rounded-xl border">
-          <h3 className="text-lg font-semibold mb-4">Pending Bills</h3>
-          <table className="w-full text-sm">
+        <div className="bg-white p-4 sm:p-6 rounded-xl border">
+          <h3 className="text-base sm:text-lg font-semibold mb-4">Pending Bills</h3>
+          <div className="overflow-x-auto">
+          <table className="w-full text-sm min-w-[700px]">
             <thead className="border-b">
               <tr>
                 <th className="text-left py-2">Select</th>
@@ -370,6 +371,7 @@ export default function Receipt() {
               </tr>
             </tfoot>
           </table>
+          </div>
         </div>
       )}
 
@@ -385,16 +387,16 @@ export default function Receipt() {
       </div>
 
       {/* Action Buttons */}
-      <div className="flex justify-end gap-4">
+      <div className="flex flex-col sm:flex-row justify-end gap-4">
         <button
           onClick={() => navigate(-1)}
-          className="bg-gray-400 hover:bg-gray-500 text-white px-6 py-2 rounded-lg"
+          className="bg-gray-400 hover:bg-gray-500 text-white px-6 py-2 rounded-lg w-full sm:w-auto"
         >
           Cancel
         </button>
         <button
           onClick={handleSave}
-          className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg"
+          className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg w-full sm:w-auto"
         >
           {editEntry ? "Update Receipt" : "Save Receipt"}
         </button>

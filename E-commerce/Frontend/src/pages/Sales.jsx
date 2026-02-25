@@ -181,11 +181,11 @@ export default function Sales() {
     <div className="space-y-8">
 
       {/* Header */}
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-semibold">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+        <h1 className="text-xl sm:text-2xl font-semibold">
           Sales Voucher
         </h1>
-        <div className="text-sm text-neutral-500">
+        <div className="text-xs sm:text-sm text-neutral-500">
           <input
             type="text"
             value={billNo}
@@ -197,7 +197,7 @@ export default function Sales() {
       </div>
 
       {/* Form */}
-      <div className="bg-white p-6 rounded-lg border border-neutral-200 grid grid-cols-3 gap-6">
+      <div className="bg-white p-4 sm:p-6 rounded-lg border border-neutral-200 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
 
         <Input label="Customer" value={customer} onChange={setCustomer} />
 
@@ -221,9 +221,10 @@ export default function Sales() {
       </div>
 
       {/* Items */}
-      <div className="bg-white p-6 rounded-lg border border-neutral-200 overflow-x-auto">
+      <div className="bg-white p-4 sm:p-6 rounded-lg border border-neutral-200">
 
-        <table className="w-full text-sm">
+        <div className="overflow-x-auto">
+        <table className="w-full text-sm min-w-[600px]">
           <thead className="border-b border-neutral-200">
             <tr>
               <th className="w-1/3">Item</th>
@@ -308,6 +309,7 @@ export default function Sales() {
             })}
           </tbody>
         </table>
+        </div>
 
         <button
           onClick={addItem}
@@ -319,7 +321,7 @@ export default function Sales() {
       </div>
 
       {/* Totals */}
-      <div className="bg-white p-6 rounded-lg border border-neutral-200 space-y-3">
+      <div className="bg-white p-4 sm:p-6 rounded-lg border border-neutral-200 space-y-3">
         <div className="flex justify-between">
           <span>Subtotal</span>
           <span>₹ {subtotal.toFixed(2)}</span>
@@ -339,17 +341,17 @@ export default function Sales() {
       </div>
 
       {/* Buttons */}
-      <div className="flex justify-end gap-4">
+      <div className="flex flex-col sm:flex-row justify-end gap-4">
         <button
           onClick={saveSale}
-          className="bg-teal-600 text-white px-6 py-2 rounded-lg hover:bg-teal-700"
+          className="bg-teal-600 text-white px-6 py-2 rounded-lg hover:bg-teal-700 w-full sm:w-auto"
         >
           Save Sale
         </button>
 
         <button
           onClick={printBill}
-          className="bg-neutral-800 text-white px-6 py-2 rounded-lg hover:bg-neutral-900"
+          className="bg-neutral-800 text-white px-6 py-2 rounded-lg hover:bg-neutral-900 w-full sm:w-auto"
         >
           Print Bill
         </button>
