@@ -156,6 +156,11 @@ export default function AdminProfile() {
         establishedYear: data.establishedYear,
         email: data.companyEmail,
         phone: data.companyPhone,
+        address: {
+          street: data.address,
+          city: "",
+          state: ""
+        },
         gstNumber: data.gstNumber,
         panNumber: data.panNumber,
         registrationNumber: data.registrationNumber,
