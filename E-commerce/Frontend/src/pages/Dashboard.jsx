@@ -63,53 +63,54 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="space-y-6 p-6 bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen">
+    <div className="space-y-4 sm:space-y-6 p-3 sm:p-4 lg:p-6 bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen">
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-teal-600 to-teal-700 p-8 rounded-2xl shadow-lg">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-8">
+      <div className="bg-gradient-to-r from-teal-600 to-teal-700 p-4 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl shadow-lg">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-8">
+          <div className="flex items-center gap-4 sm:gap-8">
             <div>
-              <p className="text-teal-100 text-sm mb-1">Net Profit (This Month)</p>
-              <div className="flex items-center gap-3">
-                <h2 className={`text-5xl font-bold ${
+              <p className="text-teal-100 text-xs sm:text-sm mb-1">Net Profit (This Month)</p>
+              <div className="flex items-center gap-2 sm:gap-3">
+                <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold ${
                   netProfit >= 0 ? "text-white" : "text-red-200"
                 }`}>
                   ₹{Math.abs(netProfit).toLocaleString('en-IN', { maximumFractionDigits: 0 })}
                 </h2>
-                <div className={`flex items-center gap-1 px-3 py-1.5 rounded-full ${
+                <div className={`flex items-center gap-1 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm ${
                   profitGrowth >= 0 ? "bg-green-500/20 text-green-100" : "bg-red-500/20 text-red-100"
                 }`}>
-                  {profitGrowth >= 0 ? <TrendingUp size={16} /> : <TrendingDown size={16} />}
-                  <span className="text-sm font-semibold">{Math.abs(profitGrowth)}%</span>
+                  {profitGrowth >= 0 ? <TrendingUp size={14} className="sm:w-4 sm:h-4" /> : <TrendingDown size={14} className="sm:w-4 sm:h-4" />}
+                  <span className="font-semibold">{Math.abs(profitGrowth)}%</span>
                 </div>
               </div>
-              <p className="text-teal-100 text-xs mt-2">
+              <p className="text-teal-100 text-xs mt-1 sm:mt-2">
                 {netProfit >= 0 ? "Great performance! 🎉" : "Focus on reducing expenses"}
               </p>
             </div>
           </div>
 
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-2 sm:gap-3 w-full sm:w-auto">
             <button
               onClick={() => navigate("/sales")}
-              className="bg-white text-teal-700 px-5 py-2.5 rounded-xl flex items-center gap-2 hover:shadow-lg transition font-medium"
+              className="flex-1 sm:flex-none bg-white text-teal-700 px-3 sm:px-5 py-2 sm:py-2.5 rounded-lg sm:rounded-xl flex items-center justify-center gap-2 hover:shadow-lg transition font-medium text-sm"
             >
-              <PlusCircle size={18} />
-              Sale
+              <PlusCircle size={16} className="sm:w-[18px] sm:h-[18px]" />
+              <span className="hidden sm:inline">Sale</span>
+              <span className="sm:hidden">Sale</span>
             </button>
             <button
               onClick={() => navigate("/purchase")}
-              className="bg-white/10 backdrop-blur text-white px-5 py-2.5 rounded-xl flex items-center gap-2 hover:bg-white/20 transition font-medium border border-white/20"
+              className="flex-1 sm:flex-none bg-white/10 backdrop-blur text-white px-3 sm:px-5 py-2 sm:py-2.5 rounded-lg sm:rounded-xl flex items-center justify-center gap-2 hover:bg-white/20 transition font-medium border border-white/20 text-sm"
             >
-              <PlusCircle size={18} />
+              <PlusCircle size={16} className="sm:w-[18px] sm:h-[18px]" />
               Purchase
             </button>
             <button
               onClick={() => navigate("/expense")}
-              className="bg-white/10 backdrop-blur text-white px-5 py-2.5 rounded-xl flex items-center gap-2 hover:bg-white/20 transition font-medium border border-white/20"
+              className="flex-1 sm:flex-none bg-white/10 backdrop-blur text-white px-3 sm:px-5 py-2 sm:py-2.5 rounded-lg sm:rounded-xl flex items-center justify-center gap-2 hover:bg-white/20 transition font-medium border border-white/20 text-sm"
             >
-              <PlusCircle size={18} />
+              <PlusCircle size={16} className="sm:w-[18px] sm:h-[18px]" />
               Expense
             </button>
           </div>
@@ -120,19 +121,19 @@ export default function Dashboard() {
       <KPIStrip data={kpiData} />
 
       {/* Main Grid */}
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         
         {/* Daily Target + Low Stock + Net Outstanding - Single Row */}
-        <div className="grid lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
           {/* Daily Target */}
-          <div className="bg-white p-6 rounded-2xl shadow-md border border-slate-200">
+          <div className="bg-white p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-md border border-slate-200">
             <div className="flex justify-between items-center mb-4">
               <div>
-                <h3 className="text-slate-700 font-semibold text-lg">Daily Sales Target</h3>
-                <p className="text-slate-500 text-sm">Track your daily performance</p>
+                <h3 className="text-slate-700 font-semibold text-base sm:text-lg">Daily Sales Target</h3>
+                <p className="text-slate-500 text-xs sm:text-sm">Track your daily performance</p>
               </div>
               <div className="text-right">
-                <span className={`text-3xl font-bold ${
+                <span className={`text-2xl sm:text-3xl font-bold ${
                   targetProgress >= 100 ? "text-green-600" : "text-amber-600"
                 }`}>
                   {targetProgress.toFixed(0)}%
@@ -163,7 +164,7 @@ export default function Dashboard() {
           </div>
 
           {/* Low Stock Alert */}
-          <div className="bg-white p-6 rounded-2xl shadow-md border border-red-200">
+          <div className="bg-white p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-md border border-red-200">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-slate-700 font-semibold">Low Stock Alert</h3>
               <span className="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs font-bold">
@@ -197,13 +198,13 @@ export default function Dashboard() {
           </div>
 
           {/* Net Outstanding */}
-          <div className="bg-gradient-to-br from-slate-800 to-slate-900 p-5 rounded-2xl shadow-xl text-white border-2 border-slate-700">
+          <div className="bg-gradient-to-br from-slate-800 to-slate-900 p-4 sm:p-5 rounded-xl sm:rounded-2xl shadow-xl text-white border-2 border-slate-700">
             <h3 className="text-slate-400 text-xs uppercase tracking-wider mb-4">
               Net Outstanding Position
             </h3>
             
             <div className="mb-4">
-              <p className={`text-3xl font-bold mb-1 ${
+              <p className={`text-2xl sm:text-3xl font-bold mb-1 ${
                 netOutstanding >= 0 ? "text-green-400" : "text-red-400"
               }`}>
                 ₹{Math.abs(netOutstanding).toLocaleString('en-IN', { maximumFractionDigits: 0 })}
@@ -240,9 +241,9 @@ export default function Dashboard() {
         </div>
 
         {/* Recent Transactions + Inventory Health */}
-        <div className="grid lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
             {/* Recent Sales */}
-            <div className="bg-white p-6 rounded-2xl shadow-md border border-slate-200">
+            <div className="bg-white p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-md border border-slate-200">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-slate-700 font-semibold">Recent Sales</h3>
                 <button onClick={() => navigate('/reports/sales')} className="text-xs text-teal-600 hover:text-teal-700 font-medium">
@@ -273,7 +274,7 @@ export default function Dashboard() {
             </div>
 
             {/* Recent Purchases */}
-            <div className="bg-white p-6 rounded-2xl shadow-md border border-slate-200">
+            <div className="bg-white p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-md border border-slate-200">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-slate-700 font-semibold">Recent Purchases</h3>
                 <button onClick={() => navigate('/reports/purchase')} className="text-xs text-teal-600 hover:text-teal-700 font-medium">
@@ -304,15 +305,15 @@ export default function Dashboard() {
             </div>
 
           {/* Business Health Score */}
-          <div className="bg-gradient-to-br from-teal-600 to-teal-700 p-6 rounded-2xl shadow-xl text-white border-2 border-teal-500">
+          <div className="bg-gradient-to-br from-teal-600 to-teal-700 p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-xl text-white border-2 border-teal-500">
             <h3 className="text-teal-100 text-sm font-semibold mb-6">Business Health</h3>
             
             <div className="flex flex-col items-center justify-center">
               <div className="relative">
-                <div className="w-32 h-32 rounded-full border-8 border-white/20 flex items-center justify-center">
+                <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-4 sm:border-8 border-white/20 flex items-center justify-center">
                   <div className="text-center">
-                    <p className="text-5xl font-bold text-white">{dashboardData ? Math.min(Math.round((dashboardData.totalSalesAmount / (dashboardData.totalSalesAmount + dashboardData.totalPurchaseAmount + dashboardData.totalExpenses || 1)) * 100), 100) : 0}</p>
-                    <p className="text-sm text-teal-100">/ 100</p>
+                    <p className="text-3xl sm:text-5xl font-bold text-white">{dashboardData ? Math.min(Math.round((dashboardData.totalSalesAmount / (dashboardData.totalSalesAmount + dashboardData.totalPurchaseAmount + dashboardData.totalExpenses || 1)) * 100), 100) : 0}</p>
+                    <p className="text-xs sm:text-sm text-teal-100">/ 100</p>
                   </div>
                 </div>
               </div>
