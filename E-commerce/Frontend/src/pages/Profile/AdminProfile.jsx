@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Edit2, Check, X, Lock } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
-import axios from "axios";
+import axios from "../../api/axios";
 
 /* ---------------- SECTION ---------------- */
 function Section({ title, sectionKey, editing, setEditing, onSave, children, editable = true }) {
@@ -114,7 +114,7 @@ export default function AdminProfile() {
   const fetchShopDetails = async () => {
     try {
       const token = localStorage.getItem("token");
-      const { data: shopData } = await axios.get("http://accunex.onrender.com/api/shops", {
+      const { data: shopData } = await axios.get("/shops", {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (shopData) {
@@ -172,7 +172,7 @@ export default function AdminProfile() {
       };
 
       const { data: updatedShop } = await axios.put(
-        "http://accunex.onrender.com/api/shops",
+        "/shops",
         updateData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
