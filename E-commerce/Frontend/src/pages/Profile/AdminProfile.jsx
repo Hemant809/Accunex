@@ -209,7 +209,7 @@ export default function AdminProfile() {
           <>
             <Field label="Company Name" name="companyName" value={data.companyName} editable={true} isEditing={edit} handleChange={handleChange} />
             <Field label="Business Type" name="businessType" value={data.businessType} editable={true} isEditing={edit} handleChange={handleChange} />
-            <Field label="Established Year" name="establishedYear" value={data.establishedYear} editable={false} />
+            <Field label="Established Year" name="establishedYear" value={data.establishedYear} editable={true} isEditing={edit} handleChange={handleChange} />
             <Field label="Company Email" name="companyEmail" value={data.companyEmail} editable={true} isEditing={edit} handleChange={handleChange} />
             <Field label="Company Phone" name="companyPhone" value={data.companyPhone} editable={true} isEditing={edit} handleChange={handleChange} />
             <Field label="Address" name="address" value={data.address} editable={true} isEditing={edit} handleChange={handleChange} />
@@ -217,20 +217,20 @@ export default function AdminProfile() {
         )}
       </Section>
 
-      {/* LEGAL DETAILS (NO EDIT ICON) */}
+      {/* LEGAL DETAILS */}
       <Section
         title="Legal & Compliance"
         sectionKey="legal"
         editing={editing}
         setEditing={setEditing}
-        editable={false}
+        onSave={saveCompanyInfo}
       >
-        {() => (
+        {(edit) => (
           <>
-            <Field label="GST Number" name="gstNumber" value={data.gstNumber} editable={false} />
-            <Field label="PAN Number" name="panNumber" value={data.panNumber} editable={false} />
-            <Field label="Business Registration No." name="registrationNumber" value={data.registrationNumber} editable={false} />
-            <Field label="FSSAI License" name="fssaiLicense" value={data.fssaiLicense} editable={false} />
+            <Field label="GST Number" name="gstNumber" value={data.gstNumber} editable={true} isEditing={edit} handleChange={handleChange} />
+            <Field label="PAN Number" name="panNumber" value={data.panNumber} editable={true} isEditing={edit} handleChange={handleChange} />
+            <Field label="Business Registration No." name="registrationNumber" value={data.registrationNumber} editable={true} isEditing={edit} handleChange={handleChange} />
+            <Field label="FSSAI License" name="fssaiLicense" value={data.fssaiLicense} editable={true} isEditing={edit} handleChange={handleChange} />
           </>
         )}
       </Section>
@@ -240,8 +240,8 @@ export default function AdminProfile() {
         {(edit) => (
           <>
             <Field label="Owner Name" name="ownerName" value={data.ownerName} editable={true} isEditing={edit} handleChange={handleChange} />
-            <Field label="Owner Aadhaar" name="ownerAadhaar" value={data.ownerAadhaar} editable={false} />
-            <Field label="Owner PAN" name="ownerPan" value={data.ownerPan} editable={false} />
+            <Field label="Owner Aadhaar" name="ownerAadhaar" value={data.ownerAadhaar} editable={true} isEditing={edit} handleChange={handleChange} />
+            <Field label="Owner PAN" name="ownerPan" value={data.ownerPan} editable={true} isEditing={edit} handleChange={handleChange} />
           </>
         )}
       </Section>
@@ -251,7 +251,7 @@ export default function AdminProfile() {
         {(edit) => (
           <>
             <Field label="Bank Name" name="bankName" value={data.bankName} editable={true} isEditing={edit} handleChange={handleChange} />
-            <Field label="Account Number" name="accountNumber" value={data.accountNumber} editable={false} />
+            <Field label="Account Number" name="accountNumber" value={data.accountNumber} editable={true} isEditing={edit} handleChange={handleChange} />
             <Field label="IFSC Code" name="ifsc" value={data.ifsc} editable={true} isEditing={edit} handleChange={handleChange} />
             <Field label="UPI ID" name="upiId" value={data.upiId} editable={true} isEditing={edit} handleChange={handleChange} />
           </>
